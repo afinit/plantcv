@@ -32,7 +32,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Analyze Color
     
@@ -54,4 +54,4 @@ which allows the user to pick a colormap for plotting.
 
 ![Screenshot](img/documentation_images/analyze_color/pseudocolored_value_image.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/analyze_color.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/analyze_color.py)

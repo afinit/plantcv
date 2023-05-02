@@ -27,7 +27,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file),
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Filtered image will highlight areas of coarse pixel 
 # intensity change based on 1st derivative
@@ -44,4 +44,4 @@ sb_y_img = pcv.sobel_filter(gray_img=gray_img, dx=0, dy=1, ksize=1)
 
 ![Screenshot](img/documentation_images/sobel_filter/sobel-y.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/sobel_filter.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/sobel_filter.py)

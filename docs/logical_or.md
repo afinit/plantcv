@@ -30,7 +30,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Combine two images that have had different thresholds applied to them.
 # For logical 'or' operation object pixel in either image object 
@@ -43,4 +43,4 @@ ab = pcv.logical_or(maskeda_thresh, maskedb_thresh)
 
 ![Screenshot](img/documentation_images/logical_or/joined.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/logical_or.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/logical_or.py)

@@ -30,7 +30,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
     
 stem_debug_img1 = pcv.morphology.analyze_stem(rgb_img=img1, stem_objects=stem_objects1, label="default")
 # Access data stored out from analyze_object
@@ -49,4 +49,4 @@ stem_angle = pcv.outputs.observations['rep1']['stem_angle']['value']
 
 ![Screenshot](img/documentation_images/analyze_stem/218_segmented_angles.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/morphology/analyze_stem.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/morphology/analyze_stem.py)

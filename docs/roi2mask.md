@@ -21,7 +21,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Read in the image 
 img, filename, filepath = pcv.readimage(filename="plant_image.png")
@@ -42,4 +42,4 @@ mask = pcv.roi.roi2mask(img=img, contour=roi_contour)
 
 ![Screenshot](img/documentation_images/roi2mask/custom_mask.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/roi/roi2mask.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/roi/roi2mask.py)

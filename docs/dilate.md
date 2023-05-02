@@ -26,7 +26,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Perform dilation
 # Results in addition of pixels to the boundary of object
@@ -38,4 +38,4 @@ dilate_img = pcv.dilate(gray_img=gray_img, ksize=9, i=1)
 
 ![Screenshot](img/documentation_images/dilate/dilate.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/dilate.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/dilate.py)

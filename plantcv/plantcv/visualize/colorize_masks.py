@@ -11,14 +11,13 @@ from plantcv.plantcv import fatal_error
 def colorize_masks(masks, colors):
     """Plot masks with different colors
     Inputs:
-        masks    = list of masks to colorize
-        colors   = list of colors (either keys from the color_dict or a list of custom tuples)
+    masks    = list of masks to colorize
+    colors   = list of colors (either keys from the color_dict or a list of custom tuples)
 
-        :param masks: list
-        :param colors: list
-        :return colored_img: ndarray
-        """
-
+    :param masks: list
+    :param colors: list
+    :return colored_img: ndarray
+    """
     # Users must enter the exact same number of colors as classes they'd like to color
     num_classes = len(masks)
     num_colors = len(colors)
@@ -26,7 +25,7 @@ def colorize_masks(masks, colors):
         fatal_error("The number of colors provided doesn't match the number of class masks provided.")
 
     # Check to make sure user provided at least one mask and color
-    if len(colors) == 0 or len(masks) == 0:
+    if 0 in (len(colors), len(masks)):
         fatal_error("At least one class mask and color must be provided.")
 
     # Dictionary of colors and the BGR values, based on some of the colors listed here:

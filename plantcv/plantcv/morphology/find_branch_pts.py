@@ -6,14 +6,14 @@ import numpy as np
 from plantcv.plantcv import params
 from plantcv.plantcv import dilate
 from plantcv.plantcv import outputs
-from plantcv.plantcv import plot_image
-from plantcv.plantcv import print_image
-from plantcv.plantcv import find_objects
+from plantcv.plantcv._debug import _debug
+from plantcv.plantcv._helpers import _cv2_findcontours
 
 
 def find_branch_pts(skel_img, mask=None, label="default"):
-    """
+    """Find branch points in a skeletonized image.
     The branching algorithm was inspired by Jean-Patrick Pommier: https://gist.github.com/jeanpat/5712699
+
     Inputs:
     skel_img    = Skeletonized image
     mask        = (Optional) binary mask for debugging. If provided, debug image will be overlaid on the mask.
@@ -27,7 +27,6 @@ def find_branch_pts(skel_img, mask=None, label="default"):
     :param label: str
     :return branch_pts_img: numpy.ndarray
     """
-
     # In a kernel: 1 values line up with 255s, -1s line up with 0s, and 0s correspond to don't care
     # T like branch points
     t1 = np.array([[-1, 1, -1],
@@ -80,11 +79,11 @@ def find_branch_pts(skel_img, mask=None, label="default"):
         # Make debugging image on mask
         mask_copy = mask.copy()
         branch_plot = cv2.cvtColor(mask_copy, cv2.COLOR_GRAY2RGB)
-        skel_obj, skel_hier = find_objects(skel_img, skel_img)
+        skel_obj, skel_hier = _cv2_findcontours(bin_img=skel_img)
         cv2.drawContours(branch_plot, skel_obj, -1, (150, 150, 150), params.line_thickness, lineType=8,
                          hierarchy=skel_hier)
 
-    branch_objects, _ = find_objects(branch_pts_img, branch_pts_img)
+    branch_objects, _ = _cv2_findcontours(bin_img=branch_pts_img)
 
     # Initialize list of tip data points
     branch_list = []
@@ -103,12 +102,7 @@ def find_branch_pts(skel_img, mask=None, label="default"):
 
     # Reset debug mode
     params.debug = debug
-    # Auto-increment device
-    params.device += 1
 
-    if params.debug == 'print':
-        print_image(branch_plot, os.path.join(params.debug_outdir, str(params.device) + '_branch_pts.png'))
-    elif params.debug == 'plot':
-        plot_image(branch_plot)
+    _debug(visual=branch_plot, filename=os.path.join(params.debug_outdir, f"{params.device}_branch_pts.png"))
 
     return branch_pts_img

@@ -30,7 +30,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 clust_img, clust_masks = pcv.spatial_clustering(mask=mask, algorithm="DBSCAN", min_cluster_size=5, max_distance=None)
 
@@ -40,4 +40,4 @@ clust_img, clust_masks = pcv.spatial_clustering(mask=mask, algorithm="DBSCAN", m
 
 ![Screenshot](img/documentation_images/spatial_clustering/Full_Image_Mask.png)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/spatial_clustering.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/spatial_clustering.py)

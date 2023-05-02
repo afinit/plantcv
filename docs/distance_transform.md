@@ -25,7 +25,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Perform dilation
 # Results in addition of pixels to the boundary of object
@@ -37,4 +37,4 @@ distance_transform_img = pcv.distance_transform(bin_img=mask, distance_type=1, m
 
 ![Screenshot](img/documentation_images/distance_transform/distance_transform_img.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/distance_transform.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/distance_transform.py)

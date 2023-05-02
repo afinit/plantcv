@@ -25,7 +25,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Create binary image from a gray image based 
 threshold_mean = pcv.threshold.mean(gray_img=gray_img, max_value=255, object_type='dark')
@@ -36,4 +36,4 @@ threshold_mean = pcv.threshold.mean(gray_img=gray_img, max_value=255, object_typ
 
 ![Screenshot](img/documentation_images/auto_threshold/mean_threshold.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/threshold/threshold_methods.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/threshold/threshold_methods.py)

@@ -16,7 +16,7 @@ Combine objects together for downstream analysis, usually done after object filt
 - **Example use:**
     - [Use in VIS tutorial](tutorials/vis_tutorial.md)
     - [Use in NIR tutorial](tutorials/nir_tutorial.md)
-    - [Use in PSII tutorial](tutorials/psII_tutorial.md) 
+    - [Use in PSII tutorial](tutorials/psII_tutorial.md)
 
 **Original image**
 
@@ -31,7 +31,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Combine objects so downstream analysis can be run on a single plant object
 obj, mask = pcv.object_composition(img, roi_objects, hierarchy)
@@ -42,4 +42,4 @@ obj, mask = pcv.object_composition(img, roi_objects, hierarchy)
 
 ![Screenshot](img/documentation_images/object_composition/combined.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/object_composition.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/object_composition.py)

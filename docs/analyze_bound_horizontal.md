@@ -28,7 +28,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Set Boundary Line    
 boundary_image = pcv.analyze_bound_horizontal(img=img, obj=obj, mask=bin_mask, line_position=300, label="default")
@@ -52,4 +52,4 @@ green is area above boundary line.
 Boundary line set at 520, purple is boundary line, blue line is height above boundary line, 
 green line is height below boundary line, green is area above boundary line and red is area below boundary line.
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/analyze_bound_horizontal.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/analyze_bound_horizontal.py)

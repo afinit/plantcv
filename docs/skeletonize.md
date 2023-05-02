@@ -21,7 +21,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 skeleton = pcv.morphology.skeletonize(mask=plant_mask)
 
@@ -29,4 +29,4 @@ skeleton = pcv.morphology.skeletonize(mask=plant_mask)
 
 ![Screenshot](img/documentation_images/skeletonize/skeleton_image.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/morphology/skeletonize.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/morphology/skeletonize.py)

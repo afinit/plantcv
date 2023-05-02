@@ -25,7 +25,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # The cycle_img created for debugging purposes allows for line thickness 
 # adjustments with the global line thickness parameter. Try setting 
@@ -39,4 +39,4 @@ num_cycles = pcv.outputs.observations['default']['num_cycles']['value']
 
 ![Screenshot](img/documentation_images/check_cycles/plot_cycles.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/morphology/check_cycles.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/morphology/check_cycles.py)

@@ -26,7 +26,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # image converted from RGB to HSV, channels are then split. 
 # Hue ('h') channel is output
@@ -60,4 +60,4 @@ v_channel = pcv.rgb2gray_hsv(rgb_img=rgb_img, channel='v')
 
 ![Screenshot](img/documentation_images/rgb2hsv/hsv_value.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/rgb2gray_hsv.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/rgb2gray_hsv.py)

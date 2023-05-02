@@ -4,17 +4,16 @@ import os
 import cv2
 import numpy as np
 from plantcv.plantcv import params
-from plantcv.plantcv import plot_image
-from plantcv.plantcv import print_image
-from plantcv.plantcv import find_objects
 from plantcv.plantcv import image_subtract
 from plantcv.plantcv.morphology import segment_sort
 from plantcv.plantcv.morphology import segment_skeleton
 from plantcv.plantcv.morphology import _iterative_prune
+from plantcv.plantcv._debug import _debug
+from plantcv.plantcv._helpers import _cv2_findcontours
 
 
 def prune(skel_img, size=0, mask=None):
-    """
+    """Prune the ends of skeletonized segments.
     The pruning algorithm proposed by https://github.com/karnoldbio
     Segments a skeleton into discrete pieces, prunes off all segments less than or
     equal to user specified size. Returns the remaining objects as a list and the
@@ -36,7 +35,6 @@ def prune(skel_img, size=0, mask=None):
     :return pruned_img: numpy.ndarray
     :return segmented_img: numpy.ndarray
     :return segment_objects: list
-
     """
     # Store debug
     debug = params.debug
@@ -45,7 +43,7 @@ def prune(skel_img, size=0, mask=None):
     pruned_img = skel_img.copy()
 
     # Check to see if the skeleton has multiple objects
-    skel_objects, _ = find_objects(skel_img, skel_img)
+    skel_objects, _ = _cv2_findcontours(bin_img=skel_img)
 
     _, objects = segment_skeleton(skel_img)
     kept_segments = []
@@ -82,20 +80,12 @@ def prune(skel_img, size=0, mask=None):
     else:
         pruned_plot = mask.copy()
     pruned_plot = cv2.cvtColor(pruned_plot, cv2.COLOR_GRAY2RGB)
-    pruned_obj, pruned_hierarchy = find_objects(pruned_img, pruned_img)
+    pruned_obj, _ = _cv2_findcontours(bin_img=pruned_img)
     cv2.drawContours(pruned_plot, removed_segments, -1, (0, 0, 255), params.line_thickness, lineType=8)
     cv2.drawContours(pruned_plot, pruned_obj, -1, (150, 150, 150), params.line_thickness, lineType=8)
 
-    # Auto-increment device
-    params.device += 1
-
-    if params.debug == 'print':
-        print_image(pruned_img, os.path.join(params.debug_outdir, str(params.device) + '_pruned.png'))
-        print_image(pruned_plot, os.path.join(params.debug_outdir, str(params.device) + '_pruned_debug.png'))
-
-    elif params.debug == 'plot':
-        plot_image(pruned_img, cmap='gray')
-        plot_image(pruned_plot)
+    _debug(visual=pruned_img, filename=os.path.join(params.debug_outdir, f"{params.device}_pruned.png"))
+    _debug(visual=pruned_img, filename=os.path.join(params.debug_outdir, f"{params.device}_pruned_debug.png"))
 
     # Segment the pruned skeleton
     segmented_img, segment_objects = segment_skeleton(pruned_img, mask)

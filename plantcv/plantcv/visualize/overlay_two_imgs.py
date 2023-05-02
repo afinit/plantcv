@@ -1,11 +1,5 @@
 # Overlay two input images
 
-"""
-Created on Tue. September 01 21:00:01 2020
-A function
-@author: hudanyunsheng
-"""
-
 import os
 import cv2
 import numpy as np
@@ -17,7 +11,8 @@ from plantcv.plantcv.transform import rescale
 
 
 def _preprocess_img_dtype(img):
-    """ Transform the input image such that the datatype after transformation is uint8, ready for opencv functions
+    """Transform the input image such that the datatype after transformation is uint8, ready for opencv functions.
+
     :param img: numpy.ndarray
     :return img_: numpy.ndarray
     """

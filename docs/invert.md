@@ -23,7 +23,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Invert a binary mask.
 inverted_img = pcv.invert(gray_img)
@@ -34,4 +34,4 @@ inverted_img = pcv.invert(gray_img)
 
 ![Screenshot](img/documentation_images/invert/inverted_image.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/invert.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/invert.py)

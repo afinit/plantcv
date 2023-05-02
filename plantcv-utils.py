@@ -10,7 +10,6 @@ import plantcv.utils
 def options():
     """Parse command line options.
     """
-
     # Create an argument parser
     parser = argparse.ArgumentParser(description="A collection of utilities for PlantCV.",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -20,7 +19,7 @@ def options():
     # Create the json2csv subcommand
     json2csv_cmd = subparsers.add_parser("json2csv", help="Convert PlantCV output JSON files to CSV.")
     json2csv_cmd.add_argument("-j", "--json", help="Input PlantCV JSON filename.", required=True)
-    json2csv_cmd.add_argument("-c", "--csv", help="Output CSV filename prefix.", required=True)
+    json2csv_cmd.add_argument("-c", "--csv", help="Output CSV filename.", required=True)
     json2csv_cmd.set_defaults(func=run_json2csv)
 
     # Create the tabulate_bayes_classes subcommand
@@ -50,29 +49,28 @@ def options():
 ###########################################
 
 
-# run_json2csv
+# Run the JSON to CSV converter
 ###########################################
 def run_json2csv(args):
     plantcv.utils.json2csv(json_file=args.json, csv_file=args.csv)
 ###########################################
 
 
-# run_json2csv
+# Run the naive Bayes tabulation converter
 ###########################################
 def run_tabulate_bayes_classes(args):
     plantcv.utils.tabulate_bayes_classes(input_file=args.infile, output_file=args.outfile)
 ###########################################
 
 
-# run_sample_images
+# Run the image random sampling utility
 ###########################################
 def run_sample_images(args):
     plantcv.utils.sample_images(source_path=args.source, dest_path=args.outdir, num=args.number)
-
 ###########################################
 
 
-# Main
+# Run the main program
 ###########################################
 def main():
     """Main program.

@@ -26,7 +26,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Resize image
 scaled_img = pcv.transform.rescale(gray_img=thermal_data, min_value=0, max_value=255)
@@ -37,4 +37,4 @@ scaled_img = pcv.transform.rescale(gray_img=thermal_data, min_value=0, max_value
 
 ![Screenshot](img/tutorial_images/thermal/rescaled_image.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/transform/rescale.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/transform/rescale.py)

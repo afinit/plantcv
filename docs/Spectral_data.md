@@ -47,7 +47,7 @@ from plantcv import plantcv as pcv
 
 
 # Read in data
-spectral_data_instance = pcv.readimage(filename="ee362e84-c861-4f0d-abbb-215ac58eed60_data")
+spectral_data_instance = pcv.readimage(filename="ee362e84-c861-4f0d-abbb-215ac58eed60_data", mode='envi')
 
 index_array_gdvi = pcv.hyperspectral.extract_index(array=spectral_data_instance, 
                                                    index="GDVI",
@@ -77,4 +77,4 @@ print(str(spectral_data_instance.max_wavelength) + spectral_data_instance.wavele
 > 1000.95nm
 ```
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/classes.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/classes.py)

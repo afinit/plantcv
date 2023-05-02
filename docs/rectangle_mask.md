@@ -19,14 +19,14 @@ Note that p1 = (0,0) is the top left hand corner bottom right hand corner is p2 
     
 **Grayscale image**
 
-![Screenshot](img/documentation_images/rectangle_mask/grayscale_image.jpg) 
+![Screenshot](img/documentation_images/rectangle_mask/grayscale_image.jpg)
 
 ```python
 from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Makes a rectangle area that will be treated as a mask
 masked, binary, contours, hierarchy = pcv.rectangle_mask(img=img, p1=(0,0), p2=(75,252), 
@@ -36,10 +36,10 @@ masked, binary, contours, hierarchy = pcv.rectangle_mask(img=img, p1=(0,0), p2=(
 
 **Region of interest**
 
-![Screenshot](img/documentation_images/rectangle_mask/roi.jpg) 
+![Screenshot](img/documentation_images/rectangle_mask/roi.jpg)
 
 **Masked image**
 
-![Screenshot](img/documentation_images/rectangle_mask/masked.jpg) 
+![Screenshot](img/documentation_images/rectangle_mask/masked.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/rectangle_mask.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/rectangle_mask.py)

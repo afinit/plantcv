@@ -7,6 +7,7 @@ from plantcv.plantcv import params
 from plantcv.plantcv import outputs
 from plantcv.plantcv import within_frame
 from plantcv.plantcv._debug import _debug
+from plantcv.plantcv._helpers import _cv2_findcontours
 
 
 def analyze_object(img, obj, mask, label="default"):
@@ -55,8 +56,6 @@ def analyze_object(img, obj, mask, label="default"):
     # Moments
     #  m = cv2.moments(obj)
     m = cv2.moments(mask, binaryImage=True)
-    # Properties
-    # Area
     area = m['m00']
 
     if area:
@@ -84,7 +83,7 @@ def analyze_object(img, obj, mask, label="default"):
         cv2.circle(background, (int(cmx), int(cmy)), 4, (255, 255, 255), -1)
         center_p = cv2.cvtColor(background, cv2.COLOR_BGR2GRAY)
         ret, centerp_binary = cv2.threshold(center_p, 0, 255, cv2.THRESH_BINARY)
-        centerpoint, cpoint_h = cv2.findContours(centerp_binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[-2:]
+        centerpoint, cpoint_h = _cv2_findcontours(bin_img=centerp_binary)
 
         dist = []
         vhull = np.vstack(hull)
@@ -153,9 +152,6 @@ def analyze_object(img, obj, mask, label="default"):
         analysis_images.append(ori_img)
 
         analysis_images.append(mask)
-
-    else:
-        pass
 
     outputs.add_observation(sample=label, variable='area', trait='area',
                             method='plantcv.plantcv.analyze_object', scale='pixels', datatype=int,

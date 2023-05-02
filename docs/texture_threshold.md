@@ -15,8 +15,7 @@ texture calculation for thresholding.
     - offset - Distance offsets (default offset=3)
     - texture_method - Feature of a grey level co-occurrence matrix, either
                       ‘contrast’, ‘dissimilarity’ (default), ‘homogeneity’, ‘ASM’, ‘energy’,
-                      or ‘correlation’. For equations of different features see
-                      http://scikit-image.org/docs/dev/api/skimage.feature.html#greycoprops
+                      or ‘correlation’. For equations of different features see [this link](http://scikit-image.org/docs/dev/api/skimage.feature.html#greycoprops)
     - borders - How the array borders are handled, either ‘reflect’, ‘constant’, ‘nearest’ (default), ‘mirror’, or ‘wrap’
     - max_value - Value to apply above threshold (usually 255 = white)
 - **Context:**
@@ -24,7 +23,7 @@ texture calculation for thresholding.
 - **Note:**
     - This function is computationally expensive and will likely take several minutes to run (even longer if images are large).
 - **Example use:**
-    - [Interactive Documentation](https://mybinder.org/v2/gh/danforthcenter/plantcv-binder.git/master?filepath=notebooks%2Fthreshold.ipynb)
+    - Below
 
 **Original image (lightness channel)**
 
@@ -37,7 +36,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Create binary image from a gray image based on texture values.
 texture_img = pcv.threshold.texture(gray_img, ksize=6, threshold=7, offset=3, 
@@ -50,4 +49,4 @@ texture_img = pcv.threshold.texture(gray_img, ksize=6, threshold=7, offset=3,
 
 ![Screenshot](img/documentation_images/texture_threshold/texture_thresholded.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/threshold/threshold_methods.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/threshold/threshold_methods.py)

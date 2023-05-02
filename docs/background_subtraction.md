@@ -38,7 +38,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Create a foreground mask from both images 
 fgmask = pcv.background_subtraction(foreground_image=plant_img, background_image=b_img)
@@ -49,4 +49,4 @@ fgmask = pcv.background_subtraction(foreground_image=plant_img, background_image
 
 ![Screenshot](img/documentation_images/background_subtraction/1_background_subtraction.png)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/background_subtraction.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/background_subtraction.py)

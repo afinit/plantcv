@@ -25,7 +25,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Identify acute vertices (tip points) of an object
 # Results in set of point values that may indicate tip points
@@ -38,4 +38,4 @@ points_rescaled, centroid_rescaled, base_rescaled = pcv.scale_features(obj, mask
 
 ![Screenshot](img/documentation_images/scale_features/sf_output.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/scale_features.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/scale_features.py)

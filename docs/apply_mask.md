@@ -33,7 +33,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Apply binary 'white' mask over an image. 
 masked_image = pcv.apply_mask(img=img, mask=mask, mask_color='white')
@@ -51,7 +51,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Apply binary 'black' mask over an image.
 masked_image = pcv.apply_mask(img=img, mask=mask, mask_color='black')
@@ -62,4 +62,4 @@ masked_image = pcv.apply_mask(img=img, mask=mask, mask_color='black')
 
 ![Screenshot](img/documentation_images/apply_mask/black_masked_image.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/apply_mask.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/apply_mask.py)

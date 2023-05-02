@@ -30,7 +30,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Create binary image from a gray image based on threshold values. 
 # Targeting light objects in the image.
@@ -44,4 +44,4 @@ The output mask is a dictionary with the keys being the class names and the valu
 
 ![Screenshot](img/documentation_images/naive_bayes_classifier/mask_image.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/learn/naive_bayes.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/learn/naive_bayes.py)

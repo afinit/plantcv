@@ -25,7 +25,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Apply to a grayscale image
 # Filtered image will highlight areas of rapid pixel intensity change
@@ -37,4 +37,4 @@ lp_img = pcv.laplace_filter(gray_img=gray_img, ksize=1, scale=1)
 
 ![Screenshot](img/documentation_images/laplace_filter/lp_filtered.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/laplace_filter.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/laplace_filter.py)

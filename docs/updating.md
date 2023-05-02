@@ -34,7 +34,7 @@ conda list plantcv
 
 ### Updating from the source code
 
-The general procedure for updating PlantCV if you are using the `master` branch
+The general procedure for updating PlantCV if you are using the `main` branch
 cloned from the `danforthcenter/plantcv` repository is to update your local
 repository and reinstall the package.
 
@@ -42,7 +42,7 @@ With GitHub Desktop you can [synchronize](https://docs.github.com/en/free-pro-te
 to pull updates from GitHub. Or on the command line update using `git pull`.
 
 If you are not sure that you have cloned the `danforthcenter/plantcv` repository
-and are on the `master` branch, here is how you can tell:
+and are on the `main` branch, here is how you can tell:
 
 If you installed PlantCV using the "editable" mode `pip install -e .` then your installation should be updated
 automatically. Alternatively, you can run `python setup.py install` to reinstall the package from the cloned repository.
@@ -385,6 +385,16 @@ pages for more details on the input and output variable types.
 * post v3.7: index_array = **plantcv.hyperspectral.extract_index**(*array, index="NDVI", distance=20*)
 * post v3.8: DEPRECATED see plantcv.spectral_index
 
+#### plantcv.hyperspectral.rot90
+
+* pre v4.x: NA
+* post v4.x: rot_hsi = **plantcv.hyperspectral.rot90**(*spectral_data, k*)
+
+#### plantcv.hyperspectral.write_data
+
+* pre v4.0: NA
+* post v4.0: **plantcv.hyperspectral.write_data**(*filename, spectral_data*)
+
 #### plantcv.image_add
 
 * pre v3.0dev2: device, added_img = **plantcv.image_add**(*img1, img2, device, debug=None*)
@@ -404,6 +414,16 @@ pages for more details on the input and output variable types.
 
 * pre v3.0dev2: device, img_inv = **plantcv.invert**(*img, device, debug=None*)
 * post v3.0dev2: img_inv = **plantcv.invert**(*gray_img*)
+
+#### plantcv.io.random_subset
+
+* pre v3.14.0: NA
+* post v3.14.0: sub_dataset = **plantcv.io.random_subset**(*dataset, num=100, seed=None*)
+
+#### plantcv.io.read_dataset
+
+* pre v3.14.0: NA
+* post v3.14.0:  image_dataset = **plantcv.io.read_dataset**(*source_path, pattern='', sort=True*)
 
 #### plantcv.landmark_reference_pt_dist
 
@@ -704,10 +724,16 @@ pages for more details on the input and output variable types.
 * pre v3.8: NA
 * post v3.8: mask = **pcv.roi.roi2mask**(*img, contour*)
 
+#### plantcv.roi.auto_grid
+
+* pre v4.0: NA
+* post v4.0: roi_objects = **pcv.roi.auto_grid**(*mask, nrows, ncols, radius=None, img=None*)
+
 #### plantcv.roi.multi
 
 * pre v3.1: NA
 * post v3.1: roi_contours, roi_hierarchies = **plantcv.roi.multi**(*img, coord, radius, spacing=None, nrows=None, ncols=None*)
+* post v4.0: roi_objects = **plantcv.roi.multi**(*img, coord, radius=None, spacing=None, nrows=None, ncols=None*)
 
 #### plantcv.roi_objects
 
@@ -756,6 +782,11 @@ pages for more details on the input and output variable types.
 
 * pre v3.0dev2: device, adjusted_img = **plantcv.shift_img**(*img, device, number, side="right", debug=None*)
 * post v3.0dev2: adjusted_img = **plantcv.shift_img**(*img, number, side="right"*)
+
+#### plantcv.segment_image_series
+
+* pre v4.0: NA
+* post v4.0: out_labels = **plantcv.segment_image_series**(*imgs_paths, masks_paths, rois, save_labels=True, ksize=3*)
 
 #### plantcv.sobel_filter
 
@@ -880,10 +911,15 @@ pages for more details on the input and output variable types.
 * pre v3.9: NA
 * post v3.9: filtered_img = **plantcv.stdev_filter**(*img, kszie, borders="nearest"*)
 
+#### plantcv.threshold.dual_channels
+
+* pre v4.0: NA
+* post v4.0: bin_img = **plantcv.threshold.dual_channels**(*rgb_img, x_channel, y_channel, points, above=True, max_value=255*)
+
 #### plantcv.threshold.binary
 
 * pre v3.0dev2: NA
-* post v3.0dev2: bin_img = plantcv.threshold.binary**(*gray_img, threshold, max_value, object_type="light"*)
+* post v3.0dev2: bin_img = **plantcv.threshold.binary**(*gray_img, threshold, max_value, object_type="light"*)
 
 #### plantcv.threshold.custom_range
 
@@ -1014,7 +1050,7 @@ pages for more details on the input and output variable types.
 #### plantcv.visualize.colorspaces
 
 * pre v3.8: NA
-* post v3.8: plotting_img = pcv.visualize.colorspaces(rgb_img)
+* post v3.8: plotting_img = pcv.visualize.colorspaces(rgb_img, original_img=True)
 
 #### plantcv.visualize.histogram
 
@@ -1045,6 +1081,16 @@ pages for more details on the input and output variable types.
 
 * pre v3.13: NA
 * post v3.13: plotting_img = **pcv.visualize.obj_sizes**(*img, mask, num_objects=100*)
+
+#### plantcv.visualize.pixel_scatter_plot
+
+* pre v4.0: NA
+* post v4.0: fig, ax = **pcv.visualize.pixel_scatter_plot**(*paths_to_imgs, x_channel, y_channel*)
+
+#### plantcv.visualize.time_lapse_video
+
+* pre v4.0: NA
+* post v4.0: frame_size = **pcv.visualize.time_lapse_video**(*img_list, out_filename='./time_lapse_video.mp4', fps=29.97, display=True*)
 
 #### plantcv.watershed_segmentation
 

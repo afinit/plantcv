@@ -25,7 +25,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Rotate image
 rotate_img = pcv.transform.rotate(img, 10, True)
@@ -42,7 +42,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Rotate image
 rotate_img = pcv.transform.rotate(img, -10, False)
@@ -53,4 +53,4 @@ rotate_img = pcv.transform.rotate(img, -10, False)
 
 ![Screenshot](img/documentation_images/rotate2/8_rotated_img.png)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/transform/rotate.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/transform/rotate.py)

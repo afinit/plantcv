@@ -28,7 +28,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Identify acute vertices (tip points) of an object
 # Results in set of point values that may indicate tip points
@@ -43,4 +43,4 @@ avg_vert_distance = pcv.outputs.observations['default']['vert_ave_c']['value']
 
 ![Screenshot](img/documentation_images/landmark_reference_pt_dist/lrpd_output.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/landmark_reference_pt_dist.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/landmark_reference_pt_dist.py)

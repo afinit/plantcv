@@ -27,7 +27,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Perform erosion filtering
 # Results in removal of isolated pixels or boundary of object removal
@@ -39,4 +39,4 @@ er_img = pcv.erode(gray_img=gray_img, ksize=3, i=1)
 
 ![Screenshot](img/documentation_images/erode/erosion.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/erode.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/erode.py)

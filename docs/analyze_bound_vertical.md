@@ -28,7 +28,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Set Boundary Line    
 boundary_image = pcv.analyze_bound_vertical(img=img, obj=obj, mask=bin_mask, line_position=1000, label="default")
@@ -54,4 +54,4 @@ Boundary line set at 1100, purple is boundary line, blue line is extent x right 
 green is area right of boundary line. Green line is extent x left of the boundary line and red is area left
 of the boundary line.
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/analyze_bound_vertical.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/analyze_bound_vertical.py)

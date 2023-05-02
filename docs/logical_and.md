@@ -29,7 +29,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Combine two images that have had different thresholds applied to them.
 # For logical 'and' operation object pixel must be in both images 
@@ -42,4 +42,4 @@ and_image = pcv.logical_and(s_threshold, b_threshold)
 
 ![Screenshot](img/documentation_images/logical_and/joined.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/logical_and.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/logical_and.py)

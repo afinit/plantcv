@@ -13,7 +13,7 @@ Identifies objects and fills objects that are less than specified size
     - Used to reduce image noise
 - **Example use:**
     - [Use In VIS Tutorial](tutorials/vis_tutorial.md)
-    - [Use In PSII Tutorial](tutorials/psII_tutorial.md) 
+    - [Use In PSII Tutorial](tutorials/psII_tutorial.md)
 
 ```python
 
@@ -21,7 +21,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Apply fill to a binary image that has had a median blur applied.
 # Image mask is the same binary image with median blur.
@@ -40,4 +40,4 @@ fill_image = pcv.fill(bin_img=binary_img, size=200)
 
 ![Screenshot](img/documentation_images/fill/fill_200.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/fill.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/fill.py)

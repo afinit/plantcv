@@ -35,7 +35,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Characterize object shapes
     
@@ -57,4 +57,4 @@ plant_solidity = pcv.outputs.observations['default']['solidity']['value']
 
 ![Screenshot](img/documentation_images/analyze_shape/shapes_on_image.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/analyze_object.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/analyze_object.py)

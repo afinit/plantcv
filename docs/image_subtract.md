@@ -29,7 +29,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Subtract image from another image. 
 subtracted_img = pcv.image_subtract(gray_img1, gray_img2)
@@ -40,4 +40,4 @@ subtracted_img = pcv.image_subtract(gray_img1, gray_img2)
 
 ![Screenshot](img/documentation_images/image_subtract/result.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/image_subtract.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/image_subtract.py)

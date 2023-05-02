@@ -5,18 +5,18 @@ name: builds
 
 on:
   push:
-    # Run when master is updated
-    branches: [ master, 4.x ]
+    # Run when main is updated
+    branches: [ main, 4.x, release-4.0 ]
   pull_request:
-    # Run on pull requests against master
-    branches: [ master, 4.x ]
+    # Run on pull requests against main
+    branches: [ main, 4.x, release-4.0 ]
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: [3.7, 3.8, 3.9]
+        python-version: ['3.8', '3.9', '3.10']
         os: [ubuntu-latest]
     env:
       OS: ${{ matrix.os }}
@@ -42,7 +42,7 @@ jobs:
     - name: Test and generate coverage report
       # Run coverage analysis on pytest tests
       run: |
-        python setup.py install
+        pip install .
         py.test --cov-report=xml --cov=plantcv tests/
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1

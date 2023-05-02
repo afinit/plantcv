@@ -35,7 +35,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Create binary image of edges.
 edges = pcv.canny_edge_detect(img)
@@ -56,4 +56,4 @@ edges2 = pcv.canny_edge_detect(img=img, sigma=0.1)
 
 
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/canny_edge_detect.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/canny_edge_detect.py)

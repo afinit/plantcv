@@ -27,7 +27,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Create binary image from a gray image based on texture values.
 texture_img_11 = pcv.stdev_filter(img=gray_img, ksize=11, borders='nearest')
@@ -49,4 +49,4 @@ texture_img_111 = pcv.stdev_filter(img=gray_img, ksize=111, borders='nearest')
 
 ![Screenshot](img/documentation_images/stdev_filter/stdev_img111.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/stdev_filter.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/stdev_filter.py)

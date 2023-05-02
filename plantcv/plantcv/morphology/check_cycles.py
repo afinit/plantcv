@@ -7,14 +7,14 @@ from plantcv.plantcv import params
 from plantcv.plantcv import erode
 from plantcv.plantcv import dilate
 from plantcv.plantcv import outputs
-from plantcv.plantcv import plot_image
-from plantcv.plantcv import print_image
-from plantcv.plantcv import find_objects
 from plantcv.plantcv import color_palette
+from plantcv.plantcv._debug import _debug
+from plantcv.plantcv._helpers import _cv2_findcontours
 
 
 def check_cycles(skel_img, label="default"):
-    """ Check for cycles in a skeleton image
+    """Check for cycles in a skeleton image.
+
     Inputs:
     skel_img     = Skeletonized image
     label        = optional label parameter, modifies the variable name of observations recorded
@@ -26,7 +26,6 @@ def check_cycles(skel_img, label="default"):
     :param label: str
     :return cycle_img: numpy.ndarray
     """
-
     # Create the mask needed for cv2.floodFill, must be larger than the image
     h, w = skel_img.shape[:2]
     mask = np.zeros((h + 2, w + 2), np.uint8)
@@ -46,7 +45,7 @@ def check_cycles(skel_img, label="default"):
     just_cycles = erode(just_cycles, 2, 1)
 
     # Use pcv.find_objects to turn plots of holes into countable contours
-    cycle_objects, cycle_hierarchies = find_objects(just_cycles, just_cycles)
+    cycle_objects, cycle_hierarchies = _cv2_findcontours(bin_img=just_cycles)
 
     # Count the number of holes
     num_cycles = len(cycle_objects)
@@ -58,7 +57,7 @@ def check_cycles(skel_img, label="default"):
     if num_cycles > 0:
         # Get a new color scale
         rand_color = color_palette(num=num_cycles, saved=False)
-        for i, cnt in enumerate(cycle_objects):
+        for i in range(0, len(cycle_objects)):
             cv2.drawContours(cycle_img, cycle_objects, i, rand_color[i], params.line_thickness, lineType=8,
                              hierarchy=cycle_hierarchies)
 
@@ -69,12 +68,7 @@ def check_cycles(skel_img, label="default"):
 
     # Reset debug mode
     params.debug = debug
-    # Auto-increment device
-    params.device += 1
 
-    if params.debug == 'print':
-        print_image(cycle_img, os.path.join(params.debug_outdir, str(params.device) + '_cycles.png'))
-    elif params.debug == 'plot':
-        plot_image(cycle_img)
+    _debug(visual=cycle_img, filename=os.path.join(params.debug_outdir, f"{params.device}_cycles.png"))
 
     return cycle_img

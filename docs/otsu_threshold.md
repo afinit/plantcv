@@ -25,11 +25,11 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Create binary image from a gray image based on threshold values. 
-# Targeting light objects in the image.
-threshold_light = pcv.threshold.otsu(gray_img=gray_img, max_value=255, object_type='dark')
+# Targeting dark objects in the image.
+threshold_dark = pcv.threshold.otsu(gray_img=gray_img, max_value=255, object_type='dark')
 
 ```
 
@@ -44,8 +44,8 @@ threshold_light = pcv.threshold.otsu(gray_img=gray_img, max_value=255, object_ty
 ```python
 
 # Create binary image from a gray image based on threshold values. 
-# Targeting dark objects in the image.
-threshold_dark = pcv.threshold.otsu(gray_img=gray_img, max_value=255, object_type='light')
+# Targeting light objects in the image.
+threshold_light = pcv.threshold.otsu(gray_img=gray_img, max_value=255, object_type='light')
 
 ```
 
@@ -53,4 +53,4 @@ threshold_dark = pcv.threshold.otsu(gray_img=gray_img, max_value=255, object_typ
 
 ![Screenshot](img/documentation_images/otsu_threshold/thresholded_light.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/threshold/threshold_methods.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/threshold/threshold_methods.py)

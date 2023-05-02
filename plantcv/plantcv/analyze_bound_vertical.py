@@ -4,6 +4,7 @@ import os
 import cv2
 import numpy as np
 from plantcv.plantcv._debug import _debug
+from plantcv.plantcv._helpers import _cv2_findcontours
 from plantcv.plantcv import params
 from plantcv.plantcv import outputs
 
@@ -44,7 +45,7 @@ def analyze_bound_vertical(img, obj, mask, line_position, label="default"):
     rec_point1 = (0, 0)
     rec_point2 = (x_coor, y_coor - 2)
     cv2.rectangle(background, rec_point1, rec_point2, (255), -1)
-    right_contour, right_hierarchy = cv2.findContours(background, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[-2:]
+    right_contour, right_hierarchy = _cv2_findcontours(bin_img=background)
 
     x, y, width, height = cv2.boundingRect(obj)
 
@@ -112,35 +113,31 @@ def analyze_bound_vertical(img, obj, mask, line_position, label="default"):
         analysis_images.append(wback)
         analysis_images.append(ori_img)
 
-    if params.debug is not None:
-        params.device += 1
-        point3 = (x_coor+2, 0)
-        point4 = (x_coor+2, y_coor)
-        cv2.line(ori_img, point3, point4, (255, 0, 255), params.line_thickness)
-        cv2.line(wback, point3, point4, (255, 0, 255), params.line_thickness)
-        m = cv2.moments(mask, binaryImage=True)
-        _, cmy = (m['m10'] / m['m00'], m['m01'] / m['m00'])
-        if x_coor - x <= 0:
-            cv2.line(ori_img, (x, int(cmy)), (x + width, int(cmy)), (0, 255, 0), params.line_thickness)
-            cv2.line(wback, (x, int(cmy)), (x + width, int(cmy)), (0, 255, 0), params.line_thickness)
-        elif x_coor - x > 0:
-            width_1 = x_coor - x
-            if width - width_1 <= 0:
-                cv2.line(ori_img, (x, int(cmy)), (x + width, int(cmy)), (255, 0, 0), params.line_thickness)
-                cv2.line(wback, (x, int(cmy)), (x + width, int(cmy)), (255, 0, 0), params.line_thickness)
-            else:
-                cv2.line(ori_img, (x_coor + 2, int(cmy)), (x_coor + width_left_bound, int(cmy)), (255, 0, 0),
-                         params.line_thickness)
-                cv2.line(ori_img, (x_coor + 2, int(cmy)), (x_coor - width_right_bound, int(cmy)), (0, 255, 0),
-                         params.line_thickness)
-                cv2.line(wback, (x_coor + 2, int(cmy)), (x_coor + width_left_bound, int(cmy)), (255, 0, 0),
-                         params.line_thickness)
-                cv2.line(wback, (x_coor + 2, int(cmy)), (x_coor - width_right_bound, int(cmy)), (0, 255, 0),
-                         params.line_thickness)
-        _debug(visual=wback,
-               filename=os.path.join(params.debug_outdir, str(params.device) + '_boundary_on_white.png'))
-        _debug(visual=ori_img,
-               filename=os.path.join(params.debug_outdir, str(params.device) + '_boundary_on_img.png'))
+    point3 = (x_coor+2, 0)
+    point4 = (x_coor+2, y_coor)
+    cv2.line(ori_img, point3, point4, (255, 0, 255), params.line_thickness)
+    cv2.line(wback, point3, point4, (255, 0, 255), params.line_thickness)
+    m = cv2.moments(mask, binaryImage=True)
+    _, cmy = (m['m10'] / m['m00'], m['m01'] / m['m00'])
+    if x_coor - x <= 0:
+        cv2.line(ori_img, (x, int(cmy)), (x + width, int(cmy)), (0, 255, 0), params.line_thickness)
+        cv2.line(wback, (x, int(cmy)), (x + width, int(cmy)), (0, 255, 0), params.line_thickness)
+    elif x_coor - x > 0:
+        width_1 = x_coor - x
+        if width - width_1 <= 0:
+            cv2.line(ori_img, (x, int(cmy)), (x + width, int(cmy)), (255, 0, 0), params.line_thickness)
+            cv2.line(wback, (x, int(cmy)), (x + width, int(cmy)), (255, 0, 0), params.line_thickness)
+        else:
+            cv2.line(ori_img, (x_coor + 2, int(cmy)), (x_coor + width_left_bound, int(cmy)), (255, 0, 0),
+                     params.line_thickness)
+            cv2.line(ori_img, (x_coor + 2, int(cmy)), (x_coor - width_right_bound, int(cmy)), (0, 255, 0),
+                     params.line_thickness)
+            cv2.line(wback, (x_coor + 2, int(cmy)), (x_coor + width_left_bound, int(cmy)), (255, 0, 0),
+                     params.line_thickness)
+            cv2.line(wback, (x_coor + 2, int(cmy)), (x_coor - width_right_bound, int(cmy)), (0, 255, 0),
+                     params.line_thickness)
+    _debug(visual=wback, filename=os.path.join(params.debug_outdir, str(params.device) + '_boundary_on_white.png'))
+    _debug(visual=ori_img, filename=os.path.join(params.debug_outdir, str(params.device) + '_boundary_on_img.png'))
 
     outputs.add_observation(sample=label, variable='vertical_reference_position', trait='vertical reference position',
                             method='plantcv.plantcv.analyze_bound_vertical', scale='none', datatype=int,

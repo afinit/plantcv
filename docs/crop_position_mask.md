@@ -36,7 +36,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Image not positioned (no adustment)
 cropped1 = pcv.crop_position_mask(img=img, mask=mask, x=0, y=0, v_pos="top", h_pos="right")
@@ -59,4 +59,4 @@ cropped2 = pcv.crop_position_mask(img=img, mask=mask, x=40, y=3, v_pos="top", h_
 
 ![Screenshot](img/documentation_images/crop_position_mask/19_mask_overlay.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/crop_position_mask.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/crop_position_mask.py)

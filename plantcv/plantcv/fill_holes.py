@@ -5,7 +5,7 @@ import os
 from plantcv.plantcv._debug import _debug
 from plantcv.plantcv import fatal_error
 from plantcv.plantcv import params
-from scipy.ndimage.morphology import binary_fill_holes
+from scipy.ndimage import binary_fill_holes
 
 
 def fill_holes(bin_img):
@@ -21,7 +21,6 @@ def fill_holes(bin_img):
     :param bin_img: numpy.ndarray
     :return filtered_img: numpy.ndarray
     """
-
     # Make sure the image is binary
     if len(np.shape(bin_img)) != 2 or len(np.unique(bin_img)) != 2:
         fatal_error("Image is not binary")

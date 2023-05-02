@@ -19,7 +19,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Apply fill holes to a binary image 
 
@@ -35,4 +35,4 @@ fill_image = pcv.fill_holes(bin_img=binary_img)
 
 ![Screenshot](img/documentation_images/fill_holes/filled_holes.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/fill_holes.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/fill_holes.py)

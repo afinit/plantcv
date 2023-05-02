@@ -33,7 +33,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Adjust line thickness with the global line thickness parameter (default = 5)
 pcv.params.line_thickness = 3 
@@ -51,4 +51,4 @@ leaf_tangent_angles = pcv.outputs.observations['default']['segment_tangent_angle
 
 ![Screenshot](img/documentation_images/segment_tangent_angle/tangent_angle_img.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/morphology/segment_tangent_angle.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/morphology/segment_tangent_angle.py)

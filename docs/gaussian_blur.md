@@ -25,7 +25,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Apply gaussian blur to a binary image that has been previously thresholded.
 gaussian_img = pcv.gaussian_blur(img=img1, ksize=(51, 51), sigma_x=0, sigma_y=None)
@@ -47,4 +47,4 @@ gaussian_img = pcv.gaussian_blur(img=img1, ksize=(101, 101), sigma_x=0, sigma_y=
 
 ![Screenshot](img/documentation_images/gaussian_blur/gaussian_blur101.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/gaussian_blur.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/gaussian_blur.py)

@@ -29,7 +29,7 @@ from plantcv import plantcv as pcv
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
 
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Combine two images that have had different thresholds applied to them.
 # For logical 'and' operation object pixel must be in both images 
@@ -42,4 +42,4 @@ xor_image = pcv.logical_xor(s_threshold, b_threshold)
 
 ![Screenshot](img/documentation_images/logical_xor/21_xor_joined.png)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/logical_xor.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/logical_xor.py)

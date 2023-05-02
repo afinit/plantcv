@@ -2,6 +2,7 @@
 import os
 import cv2
 import json
+import numpy as np
 from plantcv.plantcv import fatal_error
 import matplotlib.pyplot as plt
 from math import floor
@@ -99,7 +100,6 @@ class Outputs:
         :param value:
         :param label:
         """
-
         # Create an empty dictionary for the sample if it does not exist
         if sample not in self.observations:
             self.observations[sample] = {}
@@ -157,7 +157,7 @@ class Outputs:
                 for var in self.observations[sample]:
                     val = self.observations[sample][var]["value"]
                     # If the data type is a list or tuple we need to unpack the data
-                    if isinstance(val, list) or isinstance(val, tuple):
+                    if isinstance(val, (list, tuple)):
                         # Combine each value with its label
                         for value, label in zip(self.observations[sample][var]["value"],
                                                 self.observations[sample][var]["label"]):
@@ -215,11 +215,6 @@ class Spectral_data:
         self.filename = filename
         # The default band indices needed to make an pseudo_rgb image, if not available then store None
         self.default_bands = default_bands
-
-# Example
-# spectral_array = Spectral_data(max_wavelength=1000.95, min_wavelength=379.027, d_type=numpy.float32,
-#                           wavelength_dict=dictionary, samples=1600, lines=1704, interleave='bil',
-#                           wavelength_units='nm', array_type="datacube", filename=fname, default_bands={159,253,520})
 
 
 class PSII_data:
@@ -286,3 +281,37 @@ class Points(object):
             ax0plots = self.ax.lines
             self.ax.lines.remove(ax0plots[idx_remove])
         self.fig.canvas.draw()
+
+
+class Objects:
+    """Class for managing image contours/objects and their hierarchical relationships."""
+    def __init__(self, contours: list = None, hierarchy: list = None):
+        self.contours = contours
+        self.hierarchy = hierarchy
+        if contours is None:
+            self.contours = []
+            self.hierarchy = []
+
+    def __iter__(self):
+        self.n = 0
+        return self
+
+    def __next__(self):
+        if self.n < len(self.contours):
+            self.n += 1
+            return self.contours[self.n-1], self.hierarchy[self.n-1]
+        else:
+            raise StopIteration
+
+    def append(self, contour, h):
+        self.contours.append(contour)
+        self.hierarchy.append(h)
+
+    def save(self, filename):
+        np.savez(filename, contours=self.contours, hierarchy=self.hierarchy)
+
+    @staticmethod
+    def load(filename):
+        file = np.load(filename)
+        obj = Objects(file['contours'].tolist(), file['hierarchy'])
+        return obj

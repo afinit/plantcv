@@ -5,6 +5,7 @@ import numpy as np
 import os
 from plantcv.plantcv import logical_and
 from plantcv.plantcv._debug import _debug
+from plantcv.plantcv._helpers import _cv2_findcontours
 from plantcv.plantcv import fatal_error
 from plantcv.plantcv import params
 
@@ -58,7 +59,7 @@ def roi_objects(img, roi_contour, roi_hierarchy, object_contour, obj_hierarchy, 
         ori_img = cv2.cvtColor(ori_img, cv2.COLOR_GRAY2BGR)
 
     # Allows user to find all objects that are completely inside or overlapping with ROI
-    if roi_type.upper() == 'PARTIAL' or roi_type.upper() == 'LARGEST':
+    if roi_type.upper() in ('PARTIAL', 'LARGEST'):
         # Filter contours outside of the region of interest
         for c, cnt in enumerate(object_contour):
             filtering_mask = np.zeros(np.shape(img)[:2], dtype=np.uint8)
@@ -69,7 +70,7 @@ def roi_objects(img, roi_contour, roi_hierarchy, object_contour, obj_hierarchy, 
                 cv2.drawContours(mask, object_contour, c, (0), -1, lineType=8, hierarchy=obj_hierarchy)
 
         # Find the kept contours and area
-        kept_cnt, kept_hierarchy = cv2.findContours(np.copy(mask), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[-2:]
+        kept_cnt, kept_hierarchy = _cv2_findcontours(bin_img=mask)
         obj_area = cv2.countNonZero(mask)
 
         # Find the largest contour if roi_type is set to 'largest'
@@ -104,16 +105,14 @@ def roi_objects(img, roi_contour, roi_hierarchy, object_contour, obj_hierarchy, 
             # Overwrite mask so it only has the largest contour
             mask = np.zeros(np.shape(img)[:2], dtype=np.uint8)
             for i, cnt in enumerate(largest_cnt):
-                # print(cnt)
                 if i == 0:
                     color = (255)
                 else:
                     color = (0)
-                    # print(i)
                 cv2.drawContours(mask, largest_cnt, i, color, -1, lineType=8, hierarchy=largest_hierarchy, maxLevel=0)
 
             # Refind contours and hierarchy from new mask so they are easier to work with downstream
-            kept_cnt, kept_hierarchy = cv2.findContours(np.copy(mask), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[-2:]
+            kept_cnt, kept_hierarchy = _cv2_findcontours(bin_img=mask)
 
             # Compute object area
             obj_area = cv2.countNonZero(mask)
@@ -130,7 +129,7 @@ def roi_objects(img, roi_contour, roi_hierarchy, object_contour, obj_hierarchy, 
         cv2.fillPoly(background2, [roi_points], (255))
         mask = cv2.multiply(background1, background2)
         obj_area = cv2.countNonZero(mask)
-        kept_cnt, kept_hierarchy = cv2.findContours(np.copy(mask), cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)[-2:]
+        kept_cnt, kept_hierarchy = _cv2_findcontours(bin_img=mask)
         cv2.drawContours(ori_img, kept_cnt, -1, (0, 255, 0), -1, lineType=8, hierarchy=kept_hierarchy)
         cv2.drawContours(ori_img, roi_contour, -1, (255, 0, 0), params.line_thickness, lineType=8,
                          hierarchy=roi_hierarchy)
@@ -141,10 +140,7 @@ def roi_objects(img, roi_contour, roi_hierarchy, object_contour, obj_hierarchy, 
 
     # Reset debug mode
     params.debug = debug
-    _debug(ori_img,
-           filename=os.path.join(params.debug_outdir, str(params.device) + '_obj_on_img.png'))
-    _debug(mask, 
-           filename=os.path.join(params.debug_outdir, str(params.device) + '_roi_mask.png'),
-           cmap='gray')
+    _debug(ori_img, filename=os.path.join(params.debug_outdir, str(params.device) + '_obj_on_img.png'))
+    _debug(mask, filename=os.path.join(params.debug_outdir, str(params.device) + '_roi_mask.png'), cmap='gray')
 
     return kept_cnt, kept_hierarchy, mask, obj_area

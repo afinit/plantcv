@@ -25,7 +25,7 @@ from plantcv import plantcv as pcv
 
 # Set global debug behavior to None (default), "print" (to file), 
 # or "plot" (Jupyter Notebooks or X11)
-pcv.params.debug = "print"
+pcv.params.debug = "plot"
 
 # Shift image
 shifted_img = pcv.shift_img(img, 300, "top")
@@ -36,4 +36,4 @@ shifted_img = pcv.shift_img(img, 300, "top")
 
 ![Screenshot](img/documentation_images/shift/37_shifted.jpg)
 
-**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/master/plantcv/plantcv/shift_img.py)
+**Source Code:** [Here](https://github.com/danforthcenter/plantcv/blob/main/plantcv/plantcv/shift_img.py)
