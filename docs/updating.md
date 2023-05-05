@@ -212,6 +212,16 @@ pages for more details on the input and output variable types.
 * post v3.5: thermal_histogram = **plantcv.analyze_thermal_values**(*thermal_array, mask, histplot=False*)
 * post v3.11: thermal_histogram = **plantcv.analyze_thermal_values**(*thermal_array, mask, histplot=False, label="default"*)
 
+#### plantcv.annotate.detect_discs
+
+* pre v4.0: NA
+* post v4.0: discs_mask, discs_coor = **plantcv.annotate.detect_discs**(*bin_img, ecc_thresh=0*)
+
+#### plantcv.annotate.get_centroids
+
+* pre v4.0: NA
+* post v4.0: coordinates = **plantcv.annotate.get_centroids**(*bin_img*)
+
 #### plantcv.apply_mask
 
 * pre v3.0dev2: device, masked_img = **plantcv.apply_mask**(*img, mask, mask_color, device, debug=None*)
