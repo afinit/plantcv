@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 from math import floor
 from scipy.spatial import distance
 
-# Class helpers 
+
+# Class helpers
 def _find_closest_pt(pt, pts):
     """ Given coordinates of a point and a list of coordinates of a bunch of points, find the point that has the
     smallest Euclidean to the given point
@@ -24,6 +25,7 @@ def _find_closest_pt(pt, pts):
     dists = distance.cdist([pt], pts, 'euclidean')
     idx = np.argmin(dists)
     return idx, pts[idx]
+
 
 # Class definitions
 class Params:
