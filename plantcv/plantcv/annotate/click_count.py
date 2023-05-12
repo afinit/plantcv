@@ -1,27 +1,4 @@
-# Interactively click and count objects in a given image
-
-import os
-import cv2
-import numpy as np
-from matplotlib import pyplot as plt
-from plantcv.plantcv import params
-from plantcv.plantcv import fatal_error
-from scipy.spatial import distance
-import json
-
-def _find_closest(pt, pts):
-    """ Given coordinates of a point and a list of coordinates of a bunch of points, find the point that has the smallest Euclidean to the given point
-
-    :param pt: (tuple) coordinates of a point
-    :param pts: (a list of tuples) coordinates of a list of points
-    :return: index of the closest point and the coordinates of that point
-    """
-    if pt in pts:
-        return pts.index(pt), pt
-    dists = distance.cdist([pt], pts, 'euclidean')
-    idx = np.argmin(dists)
-    return idx, pts[idx]
-
+# Define ClickCount class for annotation/interactive tools 
 
 class ClickCount(object):
     def __init__(self, img, figsize=(12, 6)):
@@ -69,29 +46,6 @@ class ClickCount(object):
         with open(coord_file, "w") as fp:
             # Save the data in JSON format with indentation
             json.dump(obj=self.points, fp=fp, indent=4)
-
-    # def save_counter(self, counter_file):
-    #     """Save a counter object to a file
-    #     Input variables:
-    #     counter_file = Filename to write counter to
-    #     :param counter_file: str
-    #     """
-    #     # Open the file for writing
-    #     with open(counter_file, "w") as fp:
-    #         # Save the data in JSON format with indentation
-    #         json.dump(obj=vars(self), fp=fp, indent=4)
-    #
-    # def import_counter(self, counter_file):
-    #     """Import a counter object from a file
-    #     Input variables:
-    #     counter_file = Counter file to import
-    #     :param counter_file: str
-    #     """
-    #     # Open the file for reading
-    #     with open(counter_file, "r") as fp:
-    #         counter = json.load(fp)
-    #         for key, value in counter.items():
-    #             setattr(self, key, value)
 
     def view(self, label="total", color="c", view_all=False):
         """
@@ -147,7 +101,7 @@ class ClickCount(object):
             self.points[self.label].append((event.xdata, event.ydata))
             self.count[self.label] += 1
         else:
-            idx_remove, _ = _find_closest((event.xdata, event.ydata), self.points[self.label])
+            idx_remove, _ = _find_closest_pt((event.xdata, event.ydata), self.points[self.label])
             self.points[self.label].pop(idx_remove)
             idx_remove = idx_remove + self.p_not_current
             ax0plots = self.ax.lines
